@@ -51,5 +51,5 @@ class TestMovieAPI(unittest.TestCase):
             self.assertEqual(response.status_code, 400)
             self.assertIn("Invalid year format", response.get_json()["error"])
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     unittest.main()
