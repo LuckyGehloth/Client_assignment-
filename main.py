@@ -2,7 +2,8 @@ import os
 import requests
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
-
+from importlib.metadata import version
+print(version("flask"))
 load_dotenv()
 
 # Load API Key from .env file
@@ -12,6 +13,11 @@ if not TMDB_API_KEY:
     raise ValueError("TMDB_API_KEY must be set in the .env file")
 
 app = Flask(__name__)
+
+# Root route
+@app.route("/")
+def home():
+    return "Welcome to the Flask App!"
 # Test route to check if Flask is working
 @app.route("/test")
 def test():
@@ -70,10 +76,10 @@ def get_movies():
         return jsonify({"error": str(e)}), 500
 
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     app.run(debug=True)
 
-import flask
-print(flask.__version__)
+# import flask
+# print(flask.__version__)
 import sys
 print(sys.path)
